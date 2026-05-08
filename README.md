@@ -40,5 +40,25 @@ flowchart TD
     J --> C
 
 ```
+#arquitectura 
+
+```mermaid
+sequenceDiagram
+    participant Cliente
+    participant MedioPago as Medio de pago digital
+    participant Servicio as Servicio de procesamiento
+    participant DB as Base de datos
+    participant App as App / Panel
+
+    Cliente->>MedioPago: Realiza un pago
+    MedioPago->>Servicio: Llega mensaje o notificación
+    Servicio->>Servicio: Extrae valor, fecha, pagador y referencia
+    Servicio->>DB: Guarda pago normalizado
+    App->>DB: Consulta coincidencias o balances
+    App->>DB: Marca pago como validado
+    App->>Cliente: Confirma venta registrada
+
+```
+
 
 
